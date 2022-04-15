@@ -19,13 +19,14 @@ class HelloSelenium {
         searchBox.SendKeys("Selenium");
         driver.FindElement(By.Name("q")).GetAttribute("value"); // => "Selenium"
         //Give wait time after
-        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
         searchButton.Click();
         Actions actionProvider = new Actions(driver);
         // Perform click action on the element
         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(2000);
         //Find Selenium Page
-        IWebElement linkHandle = driver.FindElement(By.XPath("/html/body/div[7]/div/div[10]/div[1]/div[2]/div[2]/div/div/div[1]/div/div[1]/div/a/h3"));
+        // Previous Page xpath                                /html/body/div[7]/div/div[10]/div[1]/div[2]/div[2]/div/div/div[1]/div/div[1]/div/a/h3
+        IWebElement linkHandle = driver.FindElement(By.CssSelector("#rso > div:nth-child(1) > div > div > div.NJo7tc.Z26q7c.jGGQ5e > div > a > h3"));
         //Goto Selenium Webpage
         actionProvider.Click(linkHandle).Build().Perform();
         //Grab Banner & Convert Into Text
